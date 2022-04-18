@@ -6,6 +6,9 @@ import config from './utils/config'
 import logger from './utils/logger'
 import errors from './utils/errors'
 
+
+import router from './routes'
+
 const app = express()
 
 
@@ -17,11 +20,7 @@ app.use(
   }),
 )
 
-app.get('/', (req, res) => {
-      logger.log.success('Calling Cecilias Root')
-  res.send({ msg: 'Hello Ceciliaaa' })
-})
-
+app.use(router)
 app.use(errors.notFound)
 app.use(errors.errorHandler)
 app.listen(config.port)
