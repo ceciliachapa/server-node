@@ -3,13 +3,16 @@
 
 import express from 'express'
 import config from './utils/config'
+import logger from './utils/logger'
 
 const app = express()
 
 
+app.use(logger.middleware)
 
 app.get('/', (req, res) => {
-  res.send({ msg: 'Hello Cecilia' })
+      logger.log.success('Calling Cecilias Root')
+  res.send({ msg: 'Hello Ceciliaaa' })
 })
 
 app.listen(config.port)
