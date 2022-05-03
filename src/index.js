@@ -5,6 +5,7 @@ import cors from 'cors'
 import config from './utils/config'
 import logger from './utils/logger'
 import errors from './utils/errors'
+import auth from './utils/auth'
 
 
 import router from './routes'
@@ -22,6 +23,7 @@ app.use(
   }),
 )
 
+app.use(auth.initialize())
 app.use(router)
 app.use(errors.notFound)
 app.use(errors.errorHandler)
